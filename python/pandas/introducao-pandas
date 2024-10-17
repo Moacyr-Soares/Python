@@ -1,0 +1,41 @@
+
+
+O que é?
+
+É uma biblioteca Python para trabalhar com conjustos de dados.
+Possui funções para limpar, explorar e manipular dados.
+
+"Pandas" vem de "Panel Data".
+
+Por que usar?
+
+Para analisar big data e através de teorias estatísticas concluir.
+
+Posso limpar conjunto de dados confusos e torná-los legíveis e relevantes.
+
+Dados relevantes são importantes na ciência de dados.
+
+Ciência de Dados: Ramo da Ciência da Computação que estuda como armazenar, usar e analisar dados para tirar informações dele.
+
+O que pode fazer?
+
+Fornece respostas sobre dados.
+
+Exemplo:
+
+Existe correlação entre duas ou mais colunas?
+
+O que é valor médio?
+
+Valor máximo?
+
+Valor mínimo?
+
+Pandas pode excluir linhas que não são relevantes ou de valor errado, como valor vazio ou NULL. Isso é chamado de limpeza de dados.
+
+
+Onde está o código base do Pandas?
+
+Neste repositório no github  https://github.com/pandas-dev/pandas
+
+
