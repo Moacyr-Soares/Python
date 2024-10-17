@@ -1,0 +1,62 @@
+
+
+importar Pandas
+
+Depois de instalado, no terminal com python rodando faça: 
+
+import pandas
+
+veja.
+
+>>> import pandas
+>>> 
+>>> mydataset = {
+... 'cars' : ["BMW", "Volvo", "Ford"],
+... 'passings' : [3, 7, 2]
+... }
+>>> myvar = pandas.DataFrame(mydataset)
+>>> print(myvar)
+    cars  passings
+0    BMW         3
+1  Volvo         7
+2   Ford         2
+>>> 
+
+Pandas pd
+
+Panda geralmente é importado sob o pd pseudônimo
+
+alias: É um apelido.
+
+Crie um alias com a palavra chave as:
+
+import pandas as pd
+
+Agora o pacote Pandas pode ser referenciado como pd.
+
+
+>>> import pandas as pd
+>>> 
+>>> mydataset = {
+...     'cars': ["BMW", "Volvo", "Ford"],
+...     'passings' : [3,7,2]
+... }
+>>> 
+>>> myvar = pd.DataFrame(mydataset)
+>>> 
+>>> print(myvar)
+    cars  passings
+0    BMW         3
+1  Volvo         7
+2   Ford         2
+>>> 
+
+Verificando a versão 
+
+>>> import pandas as pd
+>>> 
+>>> print(pd.__version__)
+2.0.3
+>>> 
+
+
