@@ -1,0 +1,56 @@
+
+
+
+				Python
+				Pandas
+			MOACYR RODRIGUES SOARES
+
+Estudo da biblioteca Pandas do Python a luz do material produzido por w3Schools|
+			soares.moacyr.r@gmail.com | 
+			linkedin.com/in/moacyr-soares|      
+			https://github.com/Moacyr-Soares|
+
+
+
+
+
+
+
+
+
+Como instalar o Python no Linux?
+Antes atualize a lista de pacotes.
+
+sudo apt update
+
+Para instalar o Python3 no Linux:
+
+sudo apt install python3 
+
+Verifique a instalação.
+
+Python3 --version
+
+
+Como instalar a biblioteca Pandas no Linux?
+Para instalar o Pandas no Linux faça: 
+
+1) Instale o pip.
+O pip é o gerenciador de pacotes do Python. Para instalar faça:
+
+sudo apt update
+
+sudo apt install python3-pip
+
+2) Instalar o Pandas
+Para instalar o Pandas faça:
+
+pip3 install pandas
+
+3) Verifique se a instalação foi bem sucedida.
+
+python3
+
+import pandas as pd
+print(pd.__version__)	
+
