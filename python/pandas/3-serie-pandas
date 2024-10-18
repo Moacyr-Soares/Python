@@ -1,0 +1,132 @@
+
+
+
+Série Pandas
+
+O que é uma série?
+
+Uma série de Pandas é como uma coluna em uma tabela.
+
+Uma matriz unidimensional que contém dados de qualquer tipo.
+
+Exemplo
+
+Série simples de Pandas a partir de uma lista:
+
+>>> import pandas as pd
+>>> 
+>>> a = [1,7,2]
+>>> 
+>>> myvar = pd.Series(a)
+>>> 
+>>> print(myvar)
+0    1
+1    7
+2    2
+dtype: int64
+>>> 
+
+
+Etiquetas
+
+Se nada mais for especificado, os valores são rotulados com seu número de índice. O primeiro valor tem índice 0, o segundo valor tem índice 1, etc.
+
+Este rótulo pode ser usado para acessar um valor especificado
+
+Exemplo
+
+>>> print(myvar[0])
+1
+>>> 
+
+Criar rótulos
+
+Com o index argumento, você pode nomear seus próprios rotulos.
+
+>>> import pandas as pd
+>>> 
+>>> a = [1,7,2]
+>>> 
+>>> myvar = pd.Series(a, index = ["x", "y", "z"])
+>>> 
+>>> print(myvar)
+x    1
+y    7
+z    2
+dtype: int64
+>>> 
+
+Deposi de criar rótulos, você pode acessar um item consultando o rótulo.
+
+>>> print(myvar["y"])
+7
+>>> 
+
+Objetos Chave/Valor como Séries
+
+Também podemos usar um objeto chave/valor, como um dicionário, ao criar uma Série.
+
+Exemplo 
+Crie uma série simples de Pandas a partir de um dicionário:
+
+>>> import pandas as pd
+
+>>> 
+>>> calories = {"day1": 420, "day2": 380, "day3": 390}
+>>> 
+>>> myvar = pd.Series(calories)
+>>> 
+>>> print(myvar)
+day1    420
+day2    380
+day3    390
+dtype: int64
+
+
+Nota: As chaves do dicionário se tornam os rótulos.
+
+Para selecionar apenas alguns itens no dicionário, use o index argumento e especifique apenas os itens que deseja incluir na Série.
+
+Exemplo
+
+Crie uma série usando apenas dados de "day1" e "day2":
+
+>>> import pandas as pd
+>>> 
+>>> calories = {"day1": 420, "day2": 380, "day3": 390}
+>>> 
+>>> myvar = pd.Series(calories, index = ["day1", "day2"])
+>>> 
+>>> print(myvar)
+day1    420
+day2    380
+dtype: int64
+>>> 
+
+
+Quadros de dados
+
+Os conjuntos de dados do Pandas geralmente são tabelas multidimensionais, chamadas DataFrames.
+Um série é como uma coluna, um DataFrame é a tabela inteira.
+
+Exemplo
+Crie um DataFrame a partir de duas séries:
+
+>>> import pandas as pd 
+>>> 
+>>> data = {
+...     "calories": [420, 380, 390],
+...     "duration": [50, 40, 45]
+... }
+>>> myvar = pd.DataFrame(data)
+>>> 
+>>> print(myvar)
+   calories  duration
+0       420        50
+1       380        40
+2       390        45
+>>> 
+
+
+
+
