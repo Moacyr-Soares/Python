@@ -1,0 +1,118 @@
+
+
+
+Pandas DataFrames
+
+
+O que é um DataFrame?
+
+Um Pandas DataFrame é uma estrutura de dados bidimensional, como uma matriz bidimensional ou uma tabela com linhas e colunas
+
+Exemplo
+
+Crie um Pandas DataFrame simples:
+
+>>> import pandas as pd
+>>> 
+>>> data = {
+...     "calories": [420, 380, 390],
+...     "duration": [50, 40, 45]
+... }
+>>> 
+>>> #Load data into a DataFrame object:
+>>> 
+>>> df = pd.DataFrame(data)
+>>> 
+>>> print(df)
+   calories  duration
+0       420        50
+1       380        40
+2       390        45
+>>> 
+
+Localizar linha
+
+Como você pode ver no resultado acima, o DataFrame é como uma tabela com linhas e colunas.
+
+Os pandas usam o loc atributo para retornar uma ou mais linhas especificas
+
+Exemplo
+Retorna linha 0:
+#refer to the row index:
+>>> print(df.loc[0])
+calories    420
+duration     50
+Name: 0, dtype: int64
+>>> 
+
+Exemplo
+Retorna linha 0 e 1:
+
+#use a list of indexes:
+
+>>> print(df.loc[[0,1]])
+   calories  duration
+0       420        50
+1       380        40
+>>> 
+
+Observação: ao usar [], o resultado é um Pandas DataFrame.
+
+
+Índice Nomeados
+Com o index argumento, você pode nomear seus próprios índices.
+
+Exemplo
+Adicione uma lista de nomes para dar um nome a cada linha:
+
+>>> import pandas as pd
+>>> 
+>>> data = {
+...     "calories": [420, 380, 390],
+...     "duration": [50, 40, 45]
+... }
+>>> 
+>>> df = pd.DataFrame(data, index = ["day1", "day2", "day3"])
+>>> 
+>>> print(df)
+      calories  duration
+day1       420        50
+day2       380        40
+day3       390        45
+>>> 
+
+
+Localizar índices nomeados
+
+Use o índice nomeado no loc atributo para retornar a(s) linha(s) especificada(s).
+
+Exemplo
+
+Retornar "day2":
+
+#refer to the named index:
+>>> print(df.loc["day2"])
+calories    380
+duration     40
+Name: day2, dtype: int64
+>>> 
+
+Carregar arquivos em um DataFrame
+
+Se seus conjuntos de dados estiverem armazenados em um arquivo, o Pandas poderá carregá-los em um DataFrame.
+
+Exemplo
+
+Carregue um arquivo separado por vírgulas(arquivo CSV) em um DataFrame:
+
+>>> df = pd.read_csv('/home/moacyr/Projects/repo-python/python/pandas/5-data.csv')
+>>> print(df)
+   ponto   coord_x    coord_y
+0      1  348033.9  7387883.2
+1      2  348082.6  7387920.7
+2      3  348119.3  7387879.9
+3      4  348068.0  7387858.5
+>>> 
+
+
+
