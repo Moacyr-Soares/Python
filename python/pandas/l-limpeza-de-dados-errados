@@ -1,0 +1,176 @@
+
+
+
+Pandas- Corrigindo dados errados
+
+
+Dados Errados
+
+
+"Dados errados" não precisam ser "células vazias" ou "formato errado", podem ser apenas dados errados, como se alguém registrasse "199" em vez de "1.99".
+
+As vezes, você pode identificar dados errados ao observar o conjunto de dados, porque você tem uma expectativa do que ele deveria ser.
+
+
+Se você der uma olhada em nosso conjunto de dados, verá que na linha 7, a duração é 450, mas para todas as outras linhas a duração está entre 30 e 60.
+
+Não precisa estar errado, mas levando em consideração que esse é o conjunto de dados das sessões de treino de alguém, concluímos que essa pessoa não se exercitou em 450 minutos.
+
+Substituindo Valores
+
+Uma maneira de corrigir valores errados é substituí-los por outra coisa.
+
+No nosso exemplo, é bem provável que seja um erro de digitação, e o valor deveria ser "45" em vez de "450", e poderíamos simplesmente inserir "45" na linha 7:
+
+
+Exemplo
+
+Defina "Duração" = 45 na linha 7:
+
+>>> import pandas as pd
+>>> 
+>>> df = pd.read_csv('/home/moacyr/Projects/repo-python/python/pandas/17-data.csv')
+>>> df.loc[7, 'Duration'] = 45
+>>> 
+>>> print(df.to_string())
+    Duration          Date  Pulse  Maxpulse  Calories
+0         60  '2020/12/01'    110       130     409.1
+1         60  '2020/12/02'    117       145     479.0
+2         60  '2020/12/03'    103       135     340.0
+3         45  '2020/12/04'    109       175     282.4
+4         45  '2020/12/05'    117       148     406.0
+5         60  '2020/12/06'    102       127     300.0
+6         60  '2020/12/07'    110       136     374.0
+7         45  '2020/12/08'    104       134     253.3
+8         30  '2020/12/09'    109       133     195.1
+9         60  '2020/12/10'     98       124     269.0
+10        60  '2020/12/11'    103       147     329.3
+11        60  '2020/12/12'    100       120     250.7
+12        60  '2020/12/12'    100       120     250.7
+13        60  '2020/12/13'    106       128     345.3
+14        60  '2020/12/14'    104       132     379.3
+15        60  '2020/12/15'     98       123     275.0
+16        60  '2020/12/16'     98       120     215.2
+17        60  '2020/12/17'    100       120     300.0
+18        45  '2020/12/18'     90       112       NaN
+19        60  '2020/12/19'    103       123     323.0
+20        45  '2020/12/20'     97       125     243.0
+21        60  '2020/12/21'    108       131     364.2
+22        45           NaN    100       119     282.0
+23        60  '2020/12/23'    130       101     300.0
+24        45  '2020/12/24'    105       132     246.0
+25        60  '2020/12/25'    102       126     334.5
+26        60      20201226    100       120     250.0
+27        60  '2020/12/27'     92       118     241.0
+28        60  '2020/12/28'    103       132       NaN
+29        60  '2020/12/29'    100       132     280.0
+30        60  '2020/12/30'    102       129     380.3
+31        60  '2020/12/31'     92       115     243.0
+>>> 
+
+Para pequenos conjuntos de dados, você pode substituir os dados errados um por um, mas não para grandes conjuntos de dados.
+
+Para substituir dados incorretos em conjuntos de dados maiores, você pode criar algumas regras, por exemplo, definir alguns limites para valores legais e substituir quaisquer valores que estejam fora dos limites.
+
+Exemplo 
+
+Percorra todos os valores na coluna "Duração".
+
+Se o valor for maior que 120, defina-o como 120:
+
+
+>>> import pandas as pd
+>>> 
+>>> df = pd.read_csv('/home/moacyr/Projects/repo-python/python/pandas/17-data.csv')
+>>> 
+>>> for x in df.index:
+...     if df.loc[x, "Duration"] > 120:
+...             df.loc[x, "Duration"] = 120
+... 
+>>> print(df.to_string())
+    Duration          Date  Pulse  Maxpulse  Calories
+0         60  '2020/12/01'    110       130     409.1
+1         60  '2020/12/02'    117       145     479.0
+2         60  '2020/12/03'    103       135     340.0
+3         45  '2020/12/04'    109       175     282.4
+4         45  '2020/12/05'    117       148     406.0
+5         60  '2020/12/06'    102       127     300.0
+6         60  '2020/12/07'    110       136     374.0
+7        120  '2020/12/08'    104       134     253.3
+8         30  '2020/12/09'    109       133     195.1
+9         60  '2020/12/10'     98       124     269.0
+10        60  '2020/12/11'    103       147     329.3
+11        60  '2020/12/12'    100       120     250.7
+12        60  '2020/12/12'    100       120     250.7
+13        60  '2020/12/13'    106       128     345.3
+14        60  '2020/12/14'    104       132     379.3
+15        60  '2020/12/15'     98       123     275.0
+16        60  '2020/12/16'     98       120     215.2
+17        60  '2020/12/17'    100       120     300.0
+18        45  '2020/12/18'     90       112       NaN
+19        60  '2020/12/19'    103       123     323.0
+20        45  '2020/12/20'     97       125     243.0
+21        60  '2020/12/21'    108       131     364.2
+22        45           NaN    100       119     282.0
+23        60  '2020/12/23'    130       101     300.0
+24        45  '2020/12/24'    105       132     246.0
+25        60  '2020/12/25'    102       126     334.5
+26        60      20201226    100       120     250.0
+27        60  '2020/12/27'     92       118     241.0
+28        60  '2020/12/28'    103       132       NaN
+29        60  '2020/12/29'    100       132     280.0
+30        60  '2020/12/30'    102       129     380.3
+31        60  '2020/12/31'     92       115     243.0
+>>> 
+
+Removendo Linhas
+
+Outra maneira de lidar com dados errados é remover as linhas que contêm dados errados.
+
+Dessa forma, forma você não precisa descobrir o que substituí-los e há uma boa chance de não precisar deles para fazer suas análises.
+
+Exemplo
+
+Excluir linhas onde "Duração" é maior que 120:
+
+>>> for x in df.index:
+...     if df.loc[x, "Duration"] > 120:
+...             df.drop(x, inplace = True)
+... 
+>>> print(df.to_string())
+    Duration          Date  Pulse  Maxpulse  Calories
+0         60  '2020/12/01'    110       130     409.1
+1         60  '2020/12/02'    117       145     479.0
+2         60  '2020/12/03'    103       135     340.0
+3         45  '2020/12/04'    109       175     282.4
+4         45  '2020/12/05'    117       148     406.0
+5         60  '2020/12/06'    102       127     300.0
+6         60  '2020/12/07'    110       136     374.0
+8         30  '2020/12/09'    109       133     195.1
+9         60  '2020/12/10'     98       124     269.0
+10        60  '2020/12/11'    103       147     329.3
+11        60  '2020/12/12'    100       120     250.7
+12        60  '2020/12/12'    100       120     250.7
+13        60  '2020/12/13'    106       128     345.3
+14        60  '2020/12/14'    104       132     379.3
+15        60  '2020/12/15'     98       123     275.0
+16        60  '2020/12/16'     98       120     215.2
+17        60  '2020/12/17'    100       120     300.0
+18        45  '2020/12/18'     90       112       NaN
+19        60  '2020/12/19'    103       123     323.0
+20        45  '2020/12/20'     97       125     243.0
+21        60  '2020/12/21'    108       131     364.2
+22        45           NaN    100       119     282.0
+23        60  '2020/12/23'    130       101     300.0
+24        45  '2020/12/24'    105       132     246.0
+25        60  '2020/12/25'    102       126     334.5
+26        60      20201226    100       120     250.0
+27        60  '2020/12/27'     92       118     241.0
+28        60  '2020/12/28'    103       132       NaN
+29        60  '2020/12/29'    100       132     280.0
+30        60  '2020/12/30'    102       129     380.3
+31        60  '2020/12/31'     92       115     243.0
+>>> 
+#remember to include the 'inplace = True' argument to make the changes in the original DataFrame object instead of returning a copy
+
+
