@@ -1,0 +1,53 @@
+
+
+Pandas- Correlações de dados
+
+Encontrando relacionamentos
+
+Um ótimo aspecto no módulo Pandas é o corr() método.
+
+O corr() método calcula a relação entre cada coluna no seu conjunto de dados.
+
+>>> import pandas as pd
+>>> 
+>>> df = pd.read_csv('/home/moacyr/Projects/repo-python/python/pandas/20-data.csv')
+>>> 
+>>> print(df.corr())
+          Duration     Pulse  Maxpulse  Calories
+Duration  1.000000 -0.155408  0.009403  0.922717
+Pulse    -0.155408  1.000000  0.786535  0.025121
+Maxpulse  0.009403  0.786535  1.000000  0.203813
+Calories  0.922717  0.025121  0.203813  1.000000
+>>> 
+Observação: o corr() método ignora colunas "não numéricas".
+
+Resultado Explicado
+
+O resultado do corr() método é uma tabela com muitos números que representam o quão bom é o relacionamento entre duas colunas 
+
+O número varia de -1 a 1
+
+1 significa que há uma relação de 1 para 1 (uma corrrelação perfeita)e, para esse conjunto de dados, cada vez que um valor subia na primeira coluna, a outra também subia.
+
+0,9 também é uma boa relação e, se você aumentar um valor, o outro provavelmenteaumentará também.
+
+-0,9 seria uma relação tão boa quanto 0,9, mas se você aumentar um valor, o outro provavelmente diminuirá.
+
+0,2 significa que NÃO é um bom relacionamento, ou seja, se um valor sobe não significa que o outro também aumentará.
+
+O que é uma boa correlação? Depende do uso, mas acho que é seguro dizer que você tem que ter pelo menos 0.6(ou -0.6) para chamá-la de uma boa correlação.
+
+Correlação perfeita:
+
+Podemos ver que "Duration" e "Duration" receberam o número 1.000000, o que faz sentido, cada coluna sempre tem um relacionamento perfeito consigo mesma.
+
+Boa correlação:
+
+"Duration" e "Calories" têm uma 0.922721 correlação, que é uma correlação muito boa, e podemos prever que quanto mais tempo você treina, mais calorias você queima, e vice-versa: se você queimou muitas calorias, provavelmente fez um treinamento longo.
+
+
+Correlação ruim:
+
+"Duration" e "Maxpulse" obriveram uma 0.009403 correlação, que é uma correlação muito ruim, o que significa que não podemos prever o pulso máximo apenas observando a duração do treino, e vice-versa.
+
+ 
